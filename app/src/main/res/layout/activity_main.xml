@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.weegcn.mydragview.myDragviewlayout
+        android:id="@+id/dragview"
+        android:background="@mipmap/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="50dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="50dp"
+            android:paddingTop="50dp" >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@mipmap/weeg128" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <ListView
+                    android:id="@+id/lv_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                </ListView>
+            </LinearLayout>
+
+        </LinearLayout>
+        <com.weegcn.mydragview.MyLinearLayout
+            android:id="@+id/mll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#18B6EF"
+                android:gravity="center_vertical" >
+
+                <ImageView
+                    android:id="@+id/iv_header"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@mipmap/weeg128" />
+
+                <TextView
+                    android:id="@+id/bluetoothid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@id/iv_header"
+                    android:gravity="center_vertical"
+                    android:text="bluetooth" />
+
+                <TextView
+                    android:id="@+id/deviceinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="12dp"
+                    android:layout_toLeftOf="@+id/bluetoothbutid"
+                    android:text="Header" />
+                <ImageView
+                    android:id="@+id/bluetoothbutid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/ic_action_device_access_bluetooth_searching"
+                    />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <FrameLayout
+                    android:id="@+id/lv_main"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                </FrameLayout>
+            </LinearLayout>
+
+        </com.weegcn.mydragview.MyLinearLayout>
+    </com.weegcn.mydragview.myDragviewlayout>
+
+</android.support.constraint.ConstraintLayout>

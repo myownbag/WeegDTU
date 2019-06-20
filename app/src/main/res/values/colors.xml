@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFF</color>
+    <color name="lightyellow">#ffffe0</color><!--亮黄色 -->
+
+    <!--标签Tab未选中的颜色-->
+    <color name="color_unselected">#777777</color>
+    <!--标签Tab选中的颜色-->
+    <color name="color_selected">#303F9F</color>
+    <!--warn -->
+    <color name="color_warning">#b6062f</color>
+    <color name="color_grey">#FF757575</color>
+    <drawable name="gray">#CECECE</drawable>
+    <drawable name="white">#fff</drawable>
+</resources>
