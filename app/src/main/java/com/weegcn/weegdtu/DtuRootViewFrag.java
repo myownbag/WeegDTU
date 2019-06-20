@@ -1,4 +1,4 @@
-package com.weegcn.weegdtu.dtugc;
+package com.weegcn.weegdtu;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -12,16 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.weegcn.weegdtu.BaseFragment;
-import com.weegcn.weegdtu.CNKFixedPagerAdapter;
-import com.weegcn.weegdtu.MainActivity;
-import com.weegcn.weegdtu.R;
-import com.weegcn.weegdtu.RootViewFragment;
 import com.weegcn.weegdtu.utils.Constants;
 
 import java.util.ArrayList;
 
-public class DtuGCRootViewFrag extends RootViewFragment {
+public abstract class DtuRootViewFrag extends RootViewFragment {
 
     int mScrollX = 0;
     LayoutInflater mLayoutInflater;
@@ -32,12 +27,16 @@ public class DtuGCRootViewFrag extends RootViewFragment {
     private HorizontalScrollView mScrollBar;
     private BaseFragment mCurrentpage;
     private BaseFragment mPrepage;
-    private ArrayList<BaseFragment> fragments;
+    public ArrayList<BaseFragment> fragments;
     private int  mPreClassIndex;
     private CNKFixedPagerAdapter mPagerAdater;
+    public String thistitles[];
     Context context;
+
+
     @Override
     public void initview() {
+        addfragments();
         mLayoutInflater = LayoutInflater.from(MainActivity.getcurinstance());
         mClassContainer = mView.findViewById(R.id.ll_container);
         context = MainActivity.getcurinstance();
@@ -47,29 +46,29 @@ public class DtuGCRootViewFrag extends RootViewFragment {
         initfragments();
     }
 
+    public abstract void addfragments();
+
+
     private void initfragments() {
         int index=0;
-        addScrollView(Constants.tsetDtuDCItems);
+        if(fragments==null || thistitles==null)
+            return;
+        addScrollView(thistitles);
         mScrollBar.post(new Runnable() {
             @Override
             public void run() {
                 mScrollBar.scrollTo(mScrollX,0);
             }
         });
-        fragments = new ArrayList<>();
-            testfragment1 fg1 = new testfragment1();
-            fragments.add(fg1);
 
-            testfragment2 fg2 = new testfragment2();
-            fragments.add(fg2);
 
         mPagerAdater=new CNKFixedPagerAdapter(MainActivity.getcurinstance().getSupportFragmentManager());
-        mPagerAdater.setTitles(Constants.tsetDtuDCItems);
+        mPagerAdater.setTitles(thistitles);
         mPagerAdater.setFragments(fragments);
         info_viewpager.setAdapter(mPagerAdater);
         info_viewpager.addOnPageChangeListener(new OnpagechangedListernerImp());
-        mCurrentpage=fg1;
-        mPrepage=fg1;
+        mCurrentpage=fragments.get(0);
+        mPrepage=fragments.get(0);
     }
 
     private void addScrollView(String[] titles) {
@@ -153,6 +152,33 @@ public class DtuGCRootViewFrag extends RootViewFragment {
                 MainActivity.getcurinstance().dragviewlayout.setTouchEvent(true);
                 Log.d("zl","requestDisallowInterceptTouchEvent(false);");
             }
+
+            mCurClassIndex1=i;
+            mCurrentpage=fragments.get(i);
+            mPreClassIndex=mCurClassIndex1;
+            mCurrentpage.Oncurrentpageselect(i);
+            if(mPrepage!=null)
+            {
+                mPrepage.Oncurrentpageselect(i);
+            }
+            mPrepage=mCurrentpage;
+            View preView=mClassContainer.getChildAt(mCurClassIndex);
+            ((TextView)(preView.findViewById(R.id.horizontal_tv_type))).setTextColor(ContextCompat.getColor( MainActivity.getcurinstance(), R.color.color_unselected));
+            ((ImageView)(preView.findViewById(R.id.horizontal_img_type))).setImageResource(R.drawable.bottom_line_gray);
+            mCurClassIndex=i;
+            //设置当前为选中状态
+            View currentItem=mClassContainer.getChildAt(mCurClassIndex);
+            ((ImageView)(currentItem.findViewById(R.id.horizontal_img_type))).setImageResource(R.drawable.bottom_line_blue);
+            ((TextView)(currentItem.findViewById(R.id.horizontal_tv_type))).setTextColor(ContextCompat.getColor(MainActivity.getcurinstance(), R.color.color_selected));
+            //这边移动的距离 是经过计算粗略得出来的
+            mScrollX=currentItem.getLeft()-300;
+            //Log.d("zttjiangqq", "mScrollX:" + mScrollX);
+            mScrollBar.post(new Runnable() {
+                @Override
+                public void run() {
+                    mScrollBar.scrollTo(mScrollX,0);
+                }
+            });
         }
 
         @Override

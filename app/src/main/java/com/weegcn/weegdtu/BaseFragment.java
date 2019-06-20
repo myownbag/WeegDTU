@@ -39,7 +39,6 @@ public abstract class BaseFragment extends Fragment {
         {
             mIsatart=false;
         }
-      //  mainActivity.getcurblueservice().ChangetimeoutofPackage(50);
     }
     public void Ondlgcancled()
     {

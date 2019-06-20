@@ -1,12 +1,9 @@
 package com.weegcn.weegdtu;
 
-import android.graphics.Color;
-import android.support.annotation.DrawableRes;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,7 +14,7 @@ import android.widget.TextView;
 import com.weegcn.mydragview.MyLinearLayout;
 import com.weegcn.mydragview.myDragviewlayout;
 import com.weegcn.utils.Constants;
-import com.weegcn.weegdtu.dtugc.DtuGCRootViewFrag;
+import com.weegcn.weegdtu.dtugc.GCSettingFragment;
 
 public class MainActivity extends AppCompatActivity {
     public myDragviewlayout dragviewlayout;
@@ -107,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (position)
                 {
                     case 0:
-                        transaction.replace(R.id.lv_main,new DtuGCRootViewFrag(),
+                        transaction.replace(R.id.lv_main,new GCSettingFragment(),
                                 "DTU_GC");
                         break;
                     case 1:
