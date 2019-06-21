@@ -6,4 +6,14 @@ public class Constants {
 
     public static String tsetDtuDCItems[] = {"测试页面1","测试页面2"};
 
+    public static final int  TimeOutSecond = 18000000;
+
+    public static  String[] MenuItems = {
+            "DTU GC2018",
+            "DTU GA/GB",
+            "DMU",
+            "设备注册",
+            "固件升级"
+    };
+
 }

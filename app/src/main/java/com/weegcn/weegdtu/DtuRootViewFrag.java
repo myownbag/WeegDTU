@@ -25,7 +25,7 @@ public abstract class DtuRootViewFrag extends RootViewFragment {
     private int mCurClassIndex1;
     ViewPager info_viewpager;
     private HorizontalScrollView mScrollBar;
-    private BaseFragment mCurrentpage;
+
     private BaseFragment mPrepage;
     public ArrayList<BaseFragment> fragments;
     private int  mPreClassIndex;
@@ -35,7 +35,8 @@ public abstract class DtuRootViewFrag extends RootViewFragment {
 
 
     @Override
-    public void initview() {
+    public void initview(LayoutInflater inflater) {
+        mView = inflater.inflate(R.layout.weeg_root_view_fragment,null);
         addfragments();
         mLayoutInflater = LayoutInflater.from(MainActivity.getcurinstance());
         mClassContainer = mView.findViewById(R.id.ll_container);

@@ -13,17 +13,21 @@ import java.util.ArrayList;
 public abstract class RootViewFragment extends Fragment {
 
     public View mView;
-
+    protected BaseFragment mCurrentpage;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 //        return super.onCreateView(inflater, container, savedInstanceState);
-        mView = inflater.inflate(R.layout.weeg_root_view_fragment,null);
-        initview();
+
+        initview(inflater);
         initdata();
         return mView;
     }
-    public abstract void initview() ;
+    public abstract void initview(LayoutInflater inflater) ;
     private void initdata() {
+    }
+    public BaseFragment  getcurpage()
+    {
+        return  mCurrentpage;
     }
 }
